@@ -1,0 +1,34 @@
+stages:
+  - build
+  - scan
+  - deploy_dev
+  - deploy_prod
+
+variables:
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+
+build:
+  stage: build
+  script:
+    - docker build -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
+
+scan:
+  stage: scan
+  script:
+    - echo "Run Trivy security scan here"
+
+deploy_dev:
+  stage: deploy_dev
+  environment: dev
+  script:
+    - aws eks update-kubeconfig --region ap-southeast-1 --name cds-eks-dev
+    - kubectl set image deployment/visitor-app visitor=$IMAGE_TAG -n default
+
+deploy_prod:
+  stage: deploy_prod
+  environment: prod
+  when: manual
+  script:
+    - aws eks update-kubeconfig --region ap-southeast-1 --name cds-eks-prod
+    - kubectl set image deployment/visitor-app visitor=$IMAGE_TAG -n default
