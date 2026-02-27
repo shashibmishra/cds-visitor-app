@@ -1,10 +1,5 @@
 # Shashi Mishra - CDS Visitor Application - Test Submission
 
-**Submission Date:** 19 February 2026  
-**Deadline:** 20 February 2026 (5:00 PM)
-
----
-
 ## 1. Source Code Repository Link
 
 ### GitHub Repository
@@ -33,10 +28,6 @@ https://github.com/shashi-mishra/cds-visitor-app
 ## 2. CI/CD Pipeline Plan
 
 ### Choice of Tool: GitLab CI/CD
-
-#### Rationale & Justification
-
-**Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.** 
 
 We selected GitLab CI/CD as the primary CI/CD orchestration tool for the following strategic reasons:
 
